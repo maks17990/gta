@@ -1,7 +1,6 @@
 bridge/runtime
 *.txt
 maps
-packages
 plugins
 vs_project
 bt.dat
