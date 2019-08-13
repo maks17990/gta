@@ -165,10 +165,11 @@ mp.events.add('delete.player.contact', (player, id) => {
     player.phone.deleteContact(id);
 });
 function getRandomNumber(min, max) { return Math.floor(Math.random() * (max - min)) + min; }
-
+/*
 if (Object.keys(player.inventory.getArrayByItemId(15)).length > 0) {
   DB.Handle.query(`SELECT * FROM phone_contacts WHERE creator=?`, [player.sqlId], (e, result) => {
       player.phone.contacts = result;
       player.call("update.telephone.contacts", [result]);
   });
 };
+*/
