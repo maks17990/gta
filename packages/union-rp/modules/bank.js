@@ -36,7 +36,7 @@ const BankInfo = {
         return;
       }
 
-      // let bmoney = player.bank + money;
+      let bmoney = player.bank + money;
       player.utils.setMoney(player.money - money);
       player.utils.setBankMoney(player.bank + money);
       player.utils.bank("Пополнение счёта", "На ваш счет зачисленно ~g~$" + money);

@@ -9,7 +9,7 @@ module.exports = {
         if (!player.colshape || !player.colshape.biz) return player.utils.error(`Вы не у автосалона!`);
         var biz = player.colshape.biz;
         if (biz.bizType != 9) return player.utils.error(`Неверный тип бизнеса!`);
-        //if (!biz.status) return player.utils.error(`Бизнес закрыт!`);
+        if (!biz.status) return player.utils.error(`Бизнес закрыт!`);
 		if (player.vehicle) return;
         
         const dim = player.sqlId + 10;
@@ -25,7 +25,7 @@ module.exports = {
     
     'autoSaloon.buyNewCar': (player, str) => {
         const d = JSON.parse(str);
-        //var biz = mp.bizes.getBySqlId(d.bizId);
+        var biz = mp.bizes.getBySqlId(d.bizId);
         
         if(player.money < d.price) {
             mp.events.call("autoSaloon.cancel", player);
@@ -45,10 +45,10 @@ module.exports = {
             return player.utils.error(`Вы имеете максимальное количество машин`);
         }
 
-        //if (biz.products < 10) {
-            //mp.events.call("autoSaloon.cancel");
-            //return player.utils.error(`У бизнеса недостаточно товара!`);
-        //}
+        if (biz.products < 10) {
+            mp.events.call("autoSaloon.cancel");
+            return player.utils.error(`У бизнеса недостаточно товара!`);
+        }
 
         var pos;
 
@@ -113,8 +113,8 @@ module.exports = {
                 player.utils.success(`Вы успешно приобрели "${d.model}" за ${d.price}$`);
                 player.utils.setMoney(player.money - d.price);
                 player.call(`playerMenu.cars`, [player.cars]);
-                //biz.setProducts(biz.products - 10);
-                //biz.setBalance(biz.balance + price / 1000);
+                biz.setProducts(biz.products - 10);
+                biz.setBalance(biz.balance + price / 1000);
             });
 
             initVehicleInventory(newVehicle);
