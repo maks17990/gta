@@ -1,7 +1,7 @@
 /*
 Author: Solib aka Alex DeLarje
-Project: UnionRP GTA V
-URL: https://vk.com/unionrp
+Project: demix-RP GTA V
+URL: https://vk.com/demixrpserver
 
 mp.parkings: data and methods
 

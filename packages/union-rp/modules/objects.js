@@ -24,7 +24,7 @@ function loadObjectsFromDB() {
 
 function initObjectsUtils() {
     mp.objects.save = (model, pos, heading, data = {}) => {
-        //debug(`mp.objects.save: ${model} ${pos} ${heading} ${data}`);
+        debug(`mp.objects.save: ${model} ${pos} ${heading} ${data}`);
         DB.Handle.query("INSERT INTO objects (model,x,y,z,h,data) VALUES (?,?,?,?,?,?)",
             [model, pos.x, pos.y, pos.z, heading, JSON.stringify(data)]);
     };

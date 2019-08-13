@@ -140,12 +140,12 @@ function loadFarmFieldsFromDB() {
             delete result[i].id;
             delete result[i].type;
 
-            /*result[i].label = mp.labels.new(`~y~Ферма ~w~№${result[i].sqlId}\n ~b~Pay: ~w~${data[i].pay}$`, new mp.Vector3(pos.x, pos.y, pos.z + 2), {
+            result[i].label = mp.labels.new(`~y~Ферма ~w~№${result[i].sqlId}\n ~b~Pay: ~w~${data[i].pay}$`, new mp.Vector3(pos.x, pos.y, pos.z + 2), {
                 los: true,
                 font: 4,
                 drawDistance: 30,
                 color: [0, 187, 255, 255],
-            });*/
+            });
 
             initFarmFieldUtils(result[i]);
             initFarmFieldObjects(result[i]);
@@ -253,8 +253,8 @@ function initFarmFieldUtils(field) {
         DB.Handle.query("UPDATE farms_fields SET type=? WHERE id=?", [field.cropType, field.sqlId]);
     };
     field.fill = (type) => {
-        // debug(`field.fill: ${type}`)
-        // debug(`Зерно посеяно на поле ${field.sqlId}`);
+         debug(`field.fill: ${type}`)
+         debug(`Зерно посеяно на поле ${field.sqlId}`);
         if (field.objects) {
             field.objects.forEach((object) => {
                 object.destroy();
@@ -269,7 +269,7 @@ function initFarmFieldUtils(field) {
         var timerId = setInterval(() => {
             try {
                 field.state++;
-                // debug(`Поле ${field.sqlId} созревает. Этап: ${field.state}`);
+                 debug(`Поле ${field.sqlId} созревает. Этап: ${field.state}`);
                 if (field.state == 1) {
                     var objPositions = field.getObjPositions();
                     for (var i = 0; i < objPositions.length; i++) {
@@ -283,14 +283,14 @@ function initFarmFieldUtils(field) {
                         object.field = field;
                         field.objects.push(object);
                     }
-                    // debug(`Поле ${field.sqlId} проросло!`)
+                     debug(`Поле ${field.sqlId} проросло!`)
                 } else if (field.state == 2) {
                     for (var i = 0; i < field.objects.length; i++) {
                         var pos = field.objects[i].position;
                         pos.z += 0.25;
                         field.objects[i].position = pos;
                     }
-                    // debug(`Поле ${field.sqlId} почти созрело!`)
+                     debug(`Поле ${field.sqlId} почти созрело!`)
                 } else if (field.state == 3) {
                     for (var i = 0; i < field.objects.length; i++) {
                         var pos = field.objects[i].position;
@@ -298,7 +298,7 @@ function initFarmFieldUtils(field) {
                         field.objects[i].position = pos;
                     }
 
-                    // debug(`Поле ${field.sqlId} созрело!`)
+                     debug(`Поле ${field.sqlId} созрело!`)
                     clearInterval(timerId);
                 }
             } catch (e) {
@@ -329,7 +329,7 @@ function initFarmFieldUtils(field) {
             k += 2;
         });
 
-        // route.splice(2); //for test
+         route.splice(2); //for test
 
         player.farmJob.routeIndex = 0;
         player.farmJob.route = route;
