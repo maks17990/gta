@@ -7,7 +7,7 @@ function checkPlayer(player) {
 		return;
 	}
 
-	//player.kick("Вы отсутствуете в Whitelist.");
+	player.kick("Вы отсутствуете в Whitelist.");
 }
 
 function initwhitelist(isRefresh = false) {

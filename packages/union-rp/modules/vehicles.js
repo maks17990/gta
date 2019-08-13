@@ -20,7 +20,7 @@ function loadVehiclesFromDB() {
             vehicle.name = v.model.toLowerCase();
             vehicle.sqlId = v.id;
             vehicle.setColor(v["color1"], v["color2"]);
-            //vehicle.rotation = new mp.Vector3(0, 0, pos.h);
+            vehicle.rotation = new mp.Vector3(0, 0, pos.h);
             vehicle.vehPropData.engineBroken = v.engineBroken;
             vehicle.vehPropData.oilBroken = v.oilBroken;
             vehicle.vehPropData.accumulatorBroken = v.accumulatorBroken;
@@ -37,16 +37,16 @@ function loadVehiclesFromDB() {
             initAddictiveVehicleParams(vehicle);
             initJobVehicleFuel(vehicle);
 
-            /*vehicle.setVariable("name", vehicle.name);
+            vehicle.setVariable("name", vehicle.name);
             vehicle.setVariable("sqlId", vehicle.sqlId);
             vehicle.setVariable("engineBroken", result[i].engineBroken);
             vehicle.setVariable("oilBroken", result[i].oilBroken);
-            vehicle.setVariable("accumulatorBroken", result[i].accumulatorBroken);*/
-            //if (vehicle.faction != -2000) vehicle.fuel = vehicle.maxFuel;
+            vehicle.setVariable("accumulatorBroken", result[i].accumulatorBroken);
+            if (vehicle.faction != -2000) vehicle.fuel = vehicle.maxFuel;
 
-            //InitVehicleInventory(vehicle);
+            InitVehicleInventory(vehicle);
 
-            /*if (vehicle.faction == -2) {//работа автобусника
+            if (vehicle.faction == -2) {//работа автобусника
             	if (vehicle.name == "coach") vehicle.routeType = 1;
             	else if (vehicle.name == "airbus") vehicle.routeType = 3;
             	else if (vehicle.name == "bus") vehicle.routeType = 2;
@@ -63,7 +63,7 @@ function loadVehiclesFromDB() {
             		vehicle.minTruckerLevel = 25;
             		vehicle.maxLoad = 60;
             	}
-            }*/
+            }
         }
         console.log(`Авто загружены: ${i} шт.`);
     });

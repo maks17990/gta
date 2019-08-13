@@ -130,7 +130,7 @@ global.initPlayerTelephone = function(player) {
 };
 
 function getPhoneNumber() {
-  // if (PhoneControl.free_numbers.length < 1) return getRandomNumber(100000, 999999);
+  if (PhoneControl.free_numbers.length < 1) return getRandomNumber(100000, 999999);
   if (PhoneControl.free_numbers.length < 1) return undefined;
   let num = getRandomNumber(0, PhoneControl.free_numbers.length);
   var number = PhoneControl.free_numbers[num];
@@ -165,11 +165,10 @@ mp.events.add('delete.player.contact', (player, id) => {
     player.phone.deleteContact(id);
 });
 function getRandomNumber(min, max) { return Math.floor(Math.random() * (max - min)) + min; }
-/*
+
 if (Object.keys(player.inventory.getArrayByItemId(15)).length > 0) {
   DB.Handle.query(`SELECT * FROM phone_contacts WHERE creator=?`, [player.sqlId], (e, result) => {
       player.phone.contacts = result;
       player.call("update.telephone.contacts", [result]);
   });
 };
-*/
