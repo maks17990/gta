@@ -80,7 +80,7 @@ $(document).ready(() => {
             var el = $(`<div>${message}</div>`);
             el.css("color", textColors[index]);
             $("#chat .chat-content").append(el);
-            //$("#chat .chat-content").append("<hr />");
+            $("#chat .chat-content").append("<hr />");
             $("#chat .chat-content").scrollTop(9999);
 
             if ($("#chat .chat-content div").length > countMessages) {
@@ -101,7 +101,7 @@ $(document).ready(() => {
             chatFaded = false;
             $("#chat .chat-content").css("opacity", "1.0");
             var message = "";
-            // chatAPI.custom_push("[A] Tomat Petruchkin: всем доброго времени суток!");
+            chatAPI.custom_push("[A] Tomat Petruchkin: всем доброго времени суток!");
             var el = $(`<div>${text}</div>`);
             $("#chat .chat-content").append(el);
             $("#chat .chat-content").scrollTop(9999);
@@ -154,13 +154,13 @@ $(document).ready(() => {
                     $("#chat input").focus();
                 }, 5);
                 $("#chat .chat-content").css("overflow-y", "auto");
-                //$("#chat .chat-content div").css("opacity", "1");
+                $("#chat .chat-content div").css("opacity", "1");
             } else {
                 if (chatFaded) $("#chat .chat-content").css("opacity", "0.7");
 
                 $("#chat .chat-bottom").slideUp('fast');
                 $("#chat .chat-content").css("overflow-y", "hidden");
-                //$("#chat .chat-content div").css("opacity", "0.9");
+                $("#chat .chat-content div").css("opacity", "0.9");
             }
             $("#chat input").blur();
             setCursor(enable);
@@ -194,7 +194,7 @@ $(document).ready(() => {
                 var index = tags.indexOf($("#chat .tag a").text()) + 1;
                 if (index >= tags.length) index = 0;
                 $("#chat .tag a").text(tags[index]);
-                // $("#chat .tag").css("color", textColors[index]);
+                $("#chat .tag").css("color", textColors[index]);
                 setTimeout(() => {
                     $("#chat input").focus();
                 }, 5);
