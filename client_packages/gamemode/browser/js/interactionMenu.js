@@ -74,14 +74,14 @@ $(document).ready(() => {
             lastAction = null;
         },
         move: (x, y) => {
-            //debug(`interactionMenuAPI.move: ${x} ${y}`)
+            debug(`interactionMenuAPI.move: ${x} ${y}`)
             $("#interactionMenu").css("left", x + "%");
             $("#interactionMenu").css("top", y + "%");
         },
     };
 
     /* for tests */
-    //interactionMenuAPI.showVehicleMenu();
+    interactionMenuAPI.showVehicleMenu();
 });
 
 var lastAction;
@@ -601,7 +601,7 @@ function addictivePlayerItems(data) {
 /* Добавляем/удаляем пункты, в зависимости от данных. */
 function addictiveVehicleItems(data) {
     if (!data) data = {};
-    //debug(`data: ${JSON.stringify(data)}`)
+    debug(`data: ${JSON.stringify(data)}`)
     if (data.action == "showFaction") {
         $("#interactionMenu").empty();
         var list = {
@@ -715,8 +715,8 @@ function addictiveVehicleItems(data) {
         $("#interactionMenu").empty();
         interactionMenuAPI.addItem("default.png", "Выкинуть из транспорта");
         interactionMenuAPI.addItem("default.png", "Открыть/Закрыть транспорт");
-        // interactionMenuAPI.addItem("default.png", "Открыть/Закрыть капот");
-        // interactionMenuAPI.addItem("default.png", "Открыть/Закрыть багажник");
+         interactionMenuAPI.addItem("default.png", "Открыть/Закрыть капот");
+         interactionMenuAPI.addItem("default.png", "Открыть/Закрыть багажник");
     }
 }
 

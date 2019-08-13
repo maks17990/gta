@@ -196,7 +196,7 @@ $(document).ready(() => {
 
     window.infoTableAPI = {
         show: (name, params = null) => {
-            //alert(`infoTable.show: ${name} ${params}`);
+            alert(`infoTable.show: ${name} ${params}`);
             var infoTable = infoTables[name];
             if (!infoTable) return;
 

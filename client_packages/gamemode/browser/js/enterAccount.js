@@ -46,10 +46,10 @@ function clearForm(form) {
 
 function regAccountHandler(emailCode) {
     var data = {
-        //name: $(`#authenticationApp .registration .name`).val().trim(),
-        //surname: $(`#authenticationApp .registration .surname`).val().trim(),
-        //country: $(`#authenticationApp .registration .country`).val().trim(),
-        //city: $(`#authenticationApp .registration .city`).val().trim(),
+        name: $(`#authenticationApp .registration .name`).val().trim(),
+        surname: $(`#authenticationApp .registration .surname`).val().trim(),
+        country: $(`#authenticationApp .registration .country`).val().trim(),
+        city: $(`#authenticationApp .registration .city`).val().trim(),
         login: $(`#authenticationApp .registration .login`).val().trim(),
         email: $(`#authenticationApp .registration .email`).val().trim(),
         password: $(`#authenticationApp .registration .password`).val().trim(),
@@ -62,7 +62,7 @@ function regAccountHandler(emailCode) {
         return lightTextFieldError("#authenticationApp .registration .promocode", "Некорректный промокод!");
     }
 
-    /*if (data.name.length == 0) {
+    if (data.name.length == 0) {
           return lightTextFieldError("#authenticationApp .registration .name", "Введите имя!");
     }
 
@@ -76,7 +76,7 @@ function regAccountHandler(emailCode) {
 
     if (data.city.length == 0) {
           return lightTextFieldError("#authenticationApp .registration .city", "Введите город!");
-    }*/
+    }
 
     if (data.login.length == 0) {
         return lightTextFieldError("#authenticationApp .registration .login", "Введите логин!");
@@ -92,7 +92,7 @@ function regAccountHandler(emailCode) {
         return lightTextFieldError("#authenticationApp .registration .password2", "Повторите пароль!");
     }
 
-    /*if (data.name.length < 3 || data.name.length > 30) {
+    if (data.name.length < 3 || data.name.length > 30) {
           return lightTextFieldError("#authenticationApp .registration .name", "Имя должно состоять из 3-30 символов!");
     }
 
@@ -106,7 +106,7 @@ function regAccountHandler(emailCode) {
 
     if (data.city.length < 3 || data.city.length > 20) {
           return lightTextFieldError("#authenticationApp .registration .city", "Город должна состоять из 3-20 символов!");
-    }*/
+    }
 
     if (data.login.length < 5 || data.login.length > 20) {
         return lightTextFieldError("#authenticationApp .registration .login", "Логин должен состоять из 5-20 символов!");
@@ -371,11 +371,11 @@ function showSelectorCharacters(data) {
     }
 
 
-    /*$(`#selectorCharacters .user-block`).eq(0).remove();
     $(`#selectorCharacters .user-block`).eq(0).remove();
-    $(`#selectorCharacters .user-block`).eq(0).remove();*/
-    //var userBlocks = $(`#selectorCharacters .user-block`);
-    //for (var i = 4; i < userBlocks.length; i++) userBlocks.eq(i).remove();
+    $(`#selectorCharacters .user-block`).eq(0).remove();
+    $(`#selectorCharacters .user-block`).eq(0).remove();
+    var userBlocks = $(`#selectorCharacters .user-block`);
+    for (var i = 4; i < userBlocks.length; i++) userBlocks.eq(i).remove();
     $(`#selectorCharacters`).fadeIn("fast");
 }
 
