@@ -77,7 +77,7 @@ $(document).ready(() => {
         },
         reports: {},
         pushReport: (data) => {
-            // debug(`consoleAPI.pushReport: ${data}`)
+            debug(`consoleAPI.pushReport: ${data}`)
             data = JSON.parse(data);
             if (!Array.isArray(data)) data = [data];
             $("#console .report-list .content .empty").remove();
@@ -85,7 +85,7 @@ $(document).ready(() => {
             var length = Math.clamp(data.length, 0, COUNT_REPORTS - count);
             for (var i = 0; i < length; i++) {
                 var report = data[i];
-                // debug(`report: ${JSON.stringify(report)}`)
+                 debug(`report: ${JSON.stringify(report)}`)
                 var ownerName = (report.messages.length) ? report.messages[0].name.substr(0, 17) : "Игрок";
                 var name = (report.messages.length) ? report.messages[report.messages.length - 1].name.substr(0, 17) : "Игрок";
                 var text = (report.messages.length) ? report.messages[report.messages.length - 1].text.substr(0, 23) : "Сообщение";
@@ -160,7 +160,7 @@ $(document).ready(() => {
             $("#console .dialog-messages").scrollTop(99999);
         },
         addReportMessage: (sqlId, messages) => {
-            // debug(`addReportMessage: ${sqlId} ${messages}`)
+             debug(`addReportMessage: ${sqlId} ${messages}`)
             messages = JSON.parse(messages);
             if (!Array.isArray(messages)) messages = [messages];
             var report = consoleAPI.reports[sqlId];
@@ -190,7 +190,7 @@ $(document).ready(() => {
             }
         },
         updateReportStatus: (sqlId) => {
-            // debug(`updateReportStatus: ${sqlId}`)
+            debug(`updateReportStatus: ${sqlId}`)
             var report = consoleAPI.reports[sqlId];
             if (!report) return;
             var status = (report.adminId) ? 1 : 0;
@@ -228,7 +228,7 @@ $(document).ready(() => {
             consoleAPI.updateReportStatus(sqlId);
         },
         send: (message) => {
-            //mp.trigger('console.send', message);
+            mp.trigger('console.send', message);
             mp.invoke("command", message.escape());
         },
         sendMessage: (message) => {
@@ -240,7 +240,7 @@ $(document).ready(() => {
             if (!isFlood()) mp.trigger("events.callRemote", "admin.chat.push", JSON.stringify([message.escape()]));
         },
         show: (enable) => {
-            // if (window.medicTablet.active() || window.pdTablet.active() || window.telephone.active() || window.armyTablet.active() || window.sheriffTablet.active() || window.fibTablet.active() || window.playerMenu.active() || chatAPI.active() || tradeAPI.active() || modalAPI.active()) return;
+             if (window.medicTablet.active() || window.pdTablet.active() || window.telephone.active() || window.armyTablet.active() || window.sheriffTablet.active() || window.fibTablet.active() || window.playerMenu.active() || chatAPI.active() || tradeAPI.active() || modalAPI.active()) return;
             if (enable) {
                 $("#console").slideDown('fast');
                 $("#console .console-content").scrollTop(99999);
@@ -305,7 +305,7 @@ $(document).ready(() => {
             }
         },
         showReportMenu: (sqlId, left, top) => {
-            // debug(`showReportMenu: ${sqlId}`)
+             debug(`showReportMenu: ${sqlId}`)
             var report = consoleAPI.reports[sqlId];
             if (!report) return;
             var reportMenuEl = $(`#console .report_menu`);
