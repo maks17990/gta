@@ -101,7 +101,8 @@ global.initPlayerTelephone = function(player) {
         if (PhoneControl.special_numbers.includes(parseInt(array[i].num, 10))) return player.utils.error("Вы не можете отправить сообщение на данный номер!");
         DB.Handle.query("INSERT INTO phone_messages (text, sender_num, creator_num) VALUES (?,?,?)",
         [text, player.phone.number, array[i].num], (e, result) => {
-           // ОГРАНИЧЕНИЕ: player.phone.messages.push({ id: result.insertId, text: text, sender_num: player.phone.number, creator_num: array[i].num });
+           // ОГРАНИЧЕНИЕ: 
+           player.phone.messages.push({ id: result.insertId, text: text, sender_num: player.phone.number, creator_num: array[i].num });
            player.call("create.telephone.message", [result.insertId, text, array[i].num, true]);
            player.utils.success("Вы отправили сообщение!");
            let target = mp.players.getBySqlId(array[i].sender);
@@ -124,7 +125,8 @@ global.initPlayerTelephone = function(player) {
 		player.call("update.telephone.contacts", [result]);
   });
   DB.Handle.query(`SELECT * FROM phone_messages WHERE sender_num=? OR creator_num=?`, [player.phone.number, player.phone.number], (e, result) => {
-      // ОГРАНИЧЕНИЕ: player.phone.messages = result;
+      // ОГРАНИЧЕНИЕ: 
+      player.phone.messages = result;
       player.call("update.telephone.messages", [result]);
   });
 };
