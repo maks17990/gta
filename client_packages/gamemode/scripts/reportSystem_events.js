@@ -14,7 +14,7 @@ exports = (menu) => {
     });
 
     mp.events.add("reportSystem.reports", (reports) => {
-        // debug(`[client] reportSystem.reports: ${JSON.stringify(reports)}`)
+         debug(`[client] reportSystem.reports: ${JSON.stringify(reports)}`)
         if(reports === undefined) {
 
         } else {
