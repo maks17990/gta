@@ -39,7 +39,7 @@ var authenticationApp = new Vue({
                 }
             }
         },
-        setSex: function(selector) {
+        /*setSex: function(selector) {
               if(!selector) {
 
                   if(authenticationApp.$data.cursex !== 0) {
@@ -59,7 +59,7 @@ var authenticationApp = new Vue({
                       authenticationApp.$data.cursex = 1;
                   }
               }
-        },
+        },*/
         showRecoveryScreen: function() {
             $(".select,.login,.registration,.confirmEmail").fadeOut(500).promise().done(function() {
                 $(".recovery").fadeIn(250);

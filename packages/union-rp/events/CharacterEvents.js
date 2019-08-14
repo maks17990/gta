@@ -218,7 +218,7 @@ module.exports = {
         initPlayerInventory(player);
         initPlayerTelephone(player);
         initFinesCount(player);
-        initSatietyTimer(player);
+        // initSatietyTimer(player);
         initJobSkills(player);
         spawnPlayerCars(player);
         mp.broadcastEnterFactionPlayers(player);

@@ -335,7 +335,7 @@ module.exports = {
     },
 
     "armyStorage.takeAmmo": (player, index, ammo) => {
-        debug(`policeStorage.takeAmmo: ${index} ${ammo}`);
+        //debug(`policeStorage.takeAmmo: ${index} ${ammo}`);
         if (!player.colshape || !player.colshape.armyStorage) return player.utils.error(`Вы не у склада Army!`);
         var armyStorageMarker = player.colshape.armyStorage;
         if (!mp.factions.isArmyFaction(player.faction)) return player.utils.error(`Вы не являетесь военным!`);
@@ -349,7 +349,7 @@ module.exports = {
         products = mp.economy[`ammo_${products[index]}_products_price`].value * ammo;
         if (faction.products < products) return player.utils.error(`Недостаточно боеприпасов!`);
 
-         mp.fullDeleteItemsByParams(itemIds[index], ["faction", "owner"], [player.faction, player.sqlId]);
+        // mp.fullDeleteItemsByParams(itemIds[index], ["faction", "owner"], [player.faction, player.sqlId]);
         var params = {
             ammo: ammo,
             faction: player.faction,

@@ -2,8 +2,10 @@ bridge/runtime
 *.txt
 maps
 plugins
+vs_project
 bt.dat
 LICENSE
+node.dll
 README.md
 server.exe
 conf.json

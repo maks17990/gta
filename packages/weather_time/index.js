@@ -3,9 +3,9 @@
  * Manage Weather time.
  */
 
-const cicleTime = 300; // Change that to your day cicle in real life minutes
-const timeInGame = cicleTime/240;
-const cicleUpdate = timeInGame*600 *10000;
+const cicleTime = 30; // Change that to your day cicle in real life minutes
+const timeInGame = cicleTime/24;
+const cicleUpdate = timeInGame*60 *1000;
 
 var customWeathers = [
 	'EXTRASUNNY',
@@ -30,13 +30,13 @@ function changeWeather(){
 	const seconds = realTime.getSeconds();	
 	let calcTime;
 
-	if(timeInGame < 24){
-		calcTime = Math.floor(seconds/timeInGame) % 600; //does not work
+	if(timeInGame < 1){
+		calcTime = Math.floor(seconds/timeInGame) % 60; //does not work
 	}else{
-		calcTime = Math.floor(minutes/timeInGame) % 240;	
+		calcTime = Math.floor(minutes/timeInGame) % 24;	
 	}
 	
-	if(calcTime==0 || calcTime==24){
+	if(calcTime==0 || calcTime==12){
 		const randomWeather = Math.floor(Math.random() * customWeathers.length);  
     	mp.world.weather = customWeathers[randomWeather];
 	}	

@@ -62,10 +62,10 @@ module.exports = {
         data = JSON.parse(data);
 
         if (player.accountRegistrated) return player.utils.error(`Вы уже зарегистрировали учетную запись!`);
-        if (!data.name || data.name.length < 3 || data.name.length > 30) return player.utils.error(`Имя должно состоять из 3-30 символов!`);
-        if (!data.surname || data.surname.length < 3 || data.surname.length > 30) return player.utils.error(`Фамилия должна состоять из 3-30 символов!`);
-        if (!data.country || data.country.length < 3 || data.country.length > 20) return player.utils.error(`Страна должна состоять из 3-20 символов!`);
-        if (!data.city || data.city.length < 3 || data.city.length > 20) return player.utils.error(`Город должен состоять из 3-20 символов!`);
+        //if (!data.name || data.name.length < 3 || data.name.length > 30) return player.utils.error(`Имя должно состоять из 3-30 символов!`);
+        //if (!data.surname || data.surname.length < 3 || data.surname.length > 30) return player.utils.error(`Фамилия должна состоять из 3-30 символов!`);
+        //if (!data.country || data.country.length < 3 || data.country.length > 20) return player.utils.error(`Страна должна состоять из 3-20 символов!`);
+        //if (!data.city || data.city.length < 3 || data.city.length > 20) return player.utils.error(`Город должен состоять из 3-20 символов!`);
         if (!data.login || data.login.length < 5 || data.login.length > 20) return player.utils.error(`Логин должен состоять из 5-20 символов!`);
         if (!data.password || data.password.length < 6 || data.password.length > 20) return player.utils.error(`Пароль должен состоять из 6-20 символов!`);
         if (!data.email || data.email.length > 40) return player.utils.error(`Email должен быть менее 40 символов!`);

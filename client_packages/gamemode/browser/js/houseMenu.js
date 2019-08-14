@@ -27,7 +27,7 @@ $(document).ready(() => {
                 this.$data.houseAddress = address + ", дом №" + id;
                 this.$data.houseClass = globalConstants.houseClasses[type];
 
-                if (interior === 1) {
+                /*if (interior === 1) {
                     this.$data.houseRooms = 2;
                     this.$data.houseSquare = 65;
                 } else if (interior === 2) {
@@ -39,7 +39,7 @@ $(document).ready(() => {
                 } else if (interior === 4) {
                     this.$data.houseRooms = 4;
                     this.$data.houseSquare = 160;
-                }
+                }*/
                 this.$data.houseRooms = rooms;
                 this.$data.houseSquare = square;
 
