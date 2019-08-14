@@ -47,7 +47,7 @@ function giveWantedHandler(player) {
         player.utils.setWanted(player.wanted + wanted);
         player.utils.warning(`Ваш уровень преступности повысился!`);
         //todo оповещаем всех ПД
-        /*mp.players.forEach((rec) => {
+        mp.players.forEach((rec) => {
         	if (rec.faction == 6) {
         		rec.outputChatBox(`!{#f79} Неизвестный: Произошло убийство. Подозреваемый: ${player.name}. Место помечено на карте. Тревога: ${player.wanted} ур.`);
         		rec.call("markKilling", [player.position.x, player.position.y, player.wanted]);
@@ -56,7 +56,7 @@ function giveWantedHandler(player) {
         		rec.outputChatBox(`!{#f79} Неизвестный: Произошло убийство. Подозреваемый: ${player.name}. Место помечено на карте. Тревога: ${player.wanted} ур.`);
         		rec.call("markKilling", [player.position.x, player.position.y, player.wanted]);
         	}
-        });*/
+        });
     }
 }
 

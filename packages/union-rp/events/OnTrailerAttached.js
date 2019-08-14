@@ -1,6 +1,6 @@
 module.exports = {
     "trailerAttached": (vehicle, trailer) => {
-        // debug(`trailerAttached ${vehicle.name} ${trailer}`);
+         debug(`trailerAttached ${vehicle.name} ${trailer}`);
         if (!vehicle.player) return;
         var player = vehicle.player;
         if (player.job == 5) { //дальнобойщик

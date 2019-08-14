@@ -11,8 +11,8 @@ module.exports = {
                     lastPayDayHour = date.getHours();
 
                     allBroadcast();
-                    // housesTax();
-                    // bizesTax();
+                     housesTax();
+                     bizesTax();
                     factionsPay(date);
                 }
                 mp.updateWorldTime();

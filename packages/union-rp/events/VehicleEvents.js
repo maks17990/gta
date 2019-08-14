@@ -25,25 +25,25 @@ module.exports = {
 
     "belt.putOn": (player, enable) => {
         if (!player.vehicle) return;
-        //if (enable) player.utils.drawTextOverPlayer(`пристегнул ремень`);
-        //else player.utils.drawTextOverPlayer(`отстегнул ремень`);
+        if (enable) player.utils.drawTextOverPlayer(`пристегнул ремень`);
+        else player.utils.drawTextOverPlayer(`отстегнул ремень`);
     },
 
     "sirenSound.on": (player) => {
-        //debug(`sirenSound.on`)
+        debug(`sirenSound.on`)
         if (!player.vehicle) return;
         var sirenSound = player.vehicle.getVariable("sirenSound");
         player.vehicle.setVariable("sirenSound", !sirenSound);
     },
 
     "addMileage": (player, value) => {
-        //debug(`addMileage: ${value}`)
-        // if (!player.vehicle) return terminal.error(`event "addMileage": ${player.name} не в машине, но таймер обновления пробега сработал!`);
+        debug(`addMileage: ${value}`)
+        if (!player.vehicle) return terminal.error(`event "addMileage": ${player.name} не в машине, но таймер обновления пробега сработал!`);
         player.vehicle.utils.addMileage(value);
     },
 
     "radio.set": (player, radio) => {
-        //debug(`radio.set: ${radio}`)
+        debug(`radio.set: ${radio}`)
         if (!player.vehicle) return;
         player.vehicle.utils.setRadio(radio);
     },
@@ -126,7 +126,7 @@ module.exports = {
 
         var dist = player.dist(owner.position);
         if (dist > Config.maxInteractionDist) return player.utils.error(`Продавец далеко!`);
-        // if (player.id == owner.id) return player.utils.error(`Нельзя продать дом самому себе!`);
+        if (player.id == owner.id) return player.utils.error(`Нельзя продать дом самому себе!`);
 
         if (!owner.sellCarOffer) return player.utils.error(`Предложение у продавца не найдено!`);
 

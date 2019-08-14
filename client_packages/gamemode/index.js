@@ -65,7 +65,7 @@ mp.events.add('guiReady', () => {
                 require('gamemode/scripts/adminPanel_events.js')(menu);
                 require('gamemode/scripts/donateMenu_events.js')(menu);
                 require('gamemode/scripts/fbiPassport_events.js')(menu);
-                // require('gamemode/scripts/telephone_events.js')(menu);
+                require('gamemode/scripts/telephone_events.js')(menu);
                 require('gamemode/scripts/hudControl_events.js')(menu);
                 require('gamemode/scripts/ls_customs/index.js')(menu);
                 require('gamemode/scripts/rent_veh.js');
@@ -100,7 +100,7 @@ mp.events.add('guiReady', () => {
                 require('gamemode/prompt_events.js')(menu);
                 require('gamemode/movecam.js')(menu);*/
 
-                //mp.game.graphics.startScreenEffect('MP_job_load', 9999999, true);
+                mp.game.graphics.startScreenEffect('MP_job_load', 9999999, true);
                 mp.events.callRemote("playerBrowserReady");
                 mp.events.call("setFreeze", true);
                 setCursor(true);
@@ -140,8 +140,8 @@ function test() {
             mp.game.streaming.requestAnimDict("switch@michael@sitting");
             Ped.taskPlayAnim("switch@michael@sitting", "idle_chair", 8.0, 0.0, -1, 1, 0.0, false, false, false);
 
-            //mp.game.streaming.requestAnimDict("switch@michael@sitting");
-            //Ped.playAnim("idle_chair", "switch@michael@sitting", 1.0, true, true, true, 1.0, 1.0);
+            mp.game.streaming.requestAnimDict("switch@michael@sitting");
+            Ped.playAnim("idle_chair", "switch@michael@sitting", 1.0, true, true, true, 1.0, 1.0);
 
         }, 1000);
     }, 2000);
@@ -182,7 +182,7 @@ function startFlyingCamera() {
     var endRot = new mp.Vector3(-30, 0, randomInteger(0, 360));
     mp.CameraMoveTo(startPos, endPos, startRot, endRot, 20, 90);
     timerId = setInterval(() => {
-        //mp.events.call("startCutscene", "path1");
+        mp.events.call("startCutscene", "path1");
         var startPos = new mp.Vector3(randomInteger(-500, 500), randomInteger(-500, 500), 200);
         var startRot = new mp.Vector3(0, 30, randomInteger(0, 360));
 

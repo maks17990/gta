@@ -33,7 +33,7 @@ function messageHandler(player, info) {
             if (rec.sqlId) rec.call("chat.push", [player.id, info.text, info.tag]);
         });
 
-        //if (!player.vehicle) mp.events.call("anim", player, "special_ped@baygor@monologue_3@monologue_3f", "trees_can_talk_5");
+        if (!player.vehicle) mp.events.call("anim", player, "special_ped@baygor@monologue_3@monologue_3f", "trees_can_talk_5");
     } else if (index == 3 || index == 8) { //рация
         var radios = player.inventory.getArrayByItemId(27);
         if (!Object.keys(radios).length) return player.utils.warning(`Необходима рация!`);
