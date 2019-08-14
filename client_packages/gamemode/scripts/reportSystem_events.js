@@ -23,7 +23,7 @@ exports = (menu) => {
     });
 
     mp.events.add("reportSystem.messages", (messages) => {
-        // debug(`[client] reportSystem.messages: ${JSON.stringify(messages)}`)
+         debug(`[client] reportSystem.messages: ${JSON.stringify(messages)}`)
         if(messages === undefined) {
 
         } else {
@@ -32,7 +32,7 @@ exports = (menu) => {
     });
 
     mp.events.add("reportSystem.close", (data) => {
-        // debug(`[client] reportSystem.close: ${JSON.stringify(data)}`)
+         debug(`[client] reportSystem.close: ${JSON.stringify(data)}`)
         if(data === undefined) {
 
         } else {
