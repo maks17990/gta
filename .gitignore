@@ -1,7 +1,6 @@
 bridge/runtime
 *.txt
 maps
-packages
 plugins
 vs_project
 bt.dat
@@ -11,3 +10,4 @@ README.md
 server.exe
 conf.json
 node_modules
+server.exe
