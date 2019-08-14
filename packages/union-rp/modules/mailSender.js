@@ -9,7 +9,7 @@ module.exports.Init = () => {
                 pass: '170919905170'
             }
         });
-        message += "<br /><br /> С Уважением, Команда Union RolePlay.";
+        message += "<br /><br /> С Уважением, Команда demix RolePlay.";
         const mailOptions = {
             from: 'demixrp61@gmail.com',
             to: to,

@@ -34,7 +34,7 @@ function loadOpenReportsFromDB() {
 
 function initReportUtils(report) {
     report.pushMessage = (player, text) => {
-        // debug(`report.pushMessage: ${player.name} ${text}`)
+        debug(`report.pushMessage: ${player.name} ${text}`)
         var message = {
             playerId: player.sqlId,
             name: player.name,
