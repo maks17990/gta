@@ -5,13 +5,13 @@ module.exports.Init = () => {
         var transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: 'gtav.union@gmail.com',
-                pass: '123456789gtav'
+                user: 'demixrp61@gmail.com',
+                pass: '170919905170'
             }
         });
         message += "<br /><br /> С Уважением, Команда Union RolePlay.";
         const mailOptions = {
-            from: 'no-replay@unionrp.com',
+            from: 'demixrp61@gmail.com',
             to: to,
             subject: subject,
             html: message
