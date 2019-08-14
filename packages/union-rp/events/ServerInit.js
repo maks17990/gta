@@ -16,8 +16,8 @@ module.exports = {
             require(`../modules/achievements.js`).Init();
             require('../modules/factions.js').Init();
             require('../modules/vehicles.js').Init();
-            require('../modules/objects.js').Init(); //wait sync fix
-            require('../modules/routep.js').Init();
+            //require('../modules/objects.js').Init(); //wait sync fix
+            // require('../modules/routep.js').Init();
             require('../modules/jobs/trash/trash.js').Init();
             require('../modules/jobs/gopostal/gopostal.js');
             require('../modules/jobs/pizza/index.js');
@@ -158,7 +158,7 @@ function initMpUtils() {
     }
 
     mp.fullDeleteItemsByFaction = (playerSqlId, factionId) => {
-         debug(`fullDeleteItemsByFaction: ${playerSqlId} ${factionId}`);
+        // debug(`fullDeleteItemsByFaction: ${playerSqlId} ${factionId}`);
         var items = {
             "2": [1, 2, 3, 6, 7, 8, 9, 10, 14, 17, 18, 19, 20, 21, 22, 23, 27, 29], // LSPD
             "3": [1, 2, 3, 6, 7, 8, 9, 10, 14, 17, 18, 19, 20, 21, 22, 23, 27, 29], // BCSO
@@ -198,7 +198,7 @@ function initMpUtils() {
         worldHour += parseInt(new Date().getMinutes() / (60 / speed));
         if (worldHour != mp.world.time.hour) {
             mp.world.time.hour = worldHour;
-            debug(`Игровое время обновлено: ${mp.world.time.hour} ч. `);
+            //debug(`Игровое время обновлено: ${mp.world.time.hour} ч. `);
         }
     }
 
@@ -460,7 +460,7 @@ function initMpUtils() {
     mp.broadcastAdmins = (text) => {
         mp.players.forEach((rec) => {
             if (rec.sqlId && rec.admin) rec.call("chat.custom.push", [text]);
-             chatAPI.custom_push(`<a style="color: #FF0000">[A] Tomat Petruchkin:</a> всем доброго времени суток!`);
+            // chatAPI.custom_push(`<a style="color: #FF0000">[A] Tomat Petruchkin:</a> всем доброго времени суток!`);
         });
     }
 
