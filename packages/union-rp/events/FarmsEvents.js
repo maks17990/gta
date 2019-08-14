@@ -41,13 +41,12 @@ module.exports = {
     },
 
     "farm.warehouse.takeGrain": (player, data) => {
-         debug(`farm.warehouse.takeGrain: ${player.name} ${data}`)
-        player.farmJob = {
+        // debug(`farm.warehouse.takeGrain: ${player.name} ${data}`)
+        /*player.farmJob = {
             farm: mp.farms[0],
             type: 2,
             pay: 0
-        }; 
-        //for test*/
+        }; //for test*/
         data = JSON.parse(data);
         var fieldId = data[0];
         var grainType = Math.clamp(data[1], 0, 3);
@@ -73,7 +72,7 @@ module.exports = {
 
             veh.products.type = grainType;
             veh.products.count += count;
-             player.utils.success(`Зерно в тракторе: ${veh.products.count} / ${veh.products.maxCount} ед.`);
+            // player.utils.success(`Зерно в тракторе: ${veh.products.count} / ${veh.products.maxCount} ед.`);
         }
 
         if (veh.products.count > 0) {
@@ -83,7 +82,7 @@ module.exports = {
     },
 
     "farm.field.takeCrop": (player, objId) => {
-         debug(`farm.field.takeCrop: ${player} ${objId}`);
+        // debug(`farm.field.takeCrop: ${player} ${objId}`);
         if (player.getVariable("knockDown")) return;
         var object = mp.objects.at(objId);
         if (!object || !object.field) {
@@ -125,7 +124,7 @@ module.exports = {
                     obj.destroy();
                 }
                 rec.farmJob.pay += rec.farmJob.farm.pay;
-                 rec.utils.info(`Заработано: ${rec.farmJob.pay}$`);
+                // rec.utils.info(`Заработано: ${rec.farmJob.pay}$`);
             } catch (e) {
                 console.log(e);
             }
@@ -133,7 +132,7 @@ module.exports = {
     },
 
     "farm.warehouse.unloadCrop": (player) => {
-         debug(`far.warehouse.unloadCrop: ${player.name}`)
+        // debug(`far.warehouse.unloadCrop: ${player.name}`)
         if (!player.colshape || !player.colshape.warehouse) return player.utils.error(`Подойдите ближе!`);
         if (!player.farmJob) return player.utils.error(`Вы не работаете на ферме!`);
         var farm = player.colshape.farm;

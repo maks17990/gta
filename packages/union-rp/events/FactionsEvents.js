@@ -1,6 +1,6 @@
 module.exports = {
     "factions.invite": (player, recId) => {
-        debug(`${player.name} factions.invite ${recId}`);
+        //debug(`${player.name} factions.invite ${recId}`);
         var rec = mp.players.at(recId);
         if (!rec) return player.utils.error(`Гражданин не найден!`);
         var dist = player.dist(rec.position);
@@ -61,7 +61,7 @@ module.exports = {
     },
 
     "factions.uninvite": (player, recId) => {
-        debug(`${player.name} factions.uninvite ${recId}`);
+        //debug(`${player.name} factions.uninvite ${recId}`);
         var rec = mp.players.at(recId);
         if (!rec) return player.utils.error(`Гражданин не найден!`);
         var dist = player.dist(rec.position);

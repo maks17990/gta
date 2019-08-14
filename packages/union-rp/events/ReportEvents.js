@@ -66,7 +66,7 @@ module.exports = {
     },
 
     "reportSystem.sendMessage": (player, reportId, message) => {
-         debug(`reportSystem.sendMessage: ${player.name} ${reportId} ${message}`);
+        // debug(`reportSystem.sendMessage: ${player.name} ${reportId} ${message}`);
         var report = mp.v2_reports[reportId];
         if (!report) return player.utils.error(`Тикет с ID: ${reportId} не найден!`);
         report.pushMessage(player, message);
@@ -130,7 +130,7 @@ module.exports = {
     },
 
     "reportSystem.createTicket": (player, message, reason) => {
-         debug(`reportSystem.createTicket: ${player.name} ${message} ${reason}`)
+        // debug(`reportSystem.createTicket: ${player.name} ${message} ${reason}`)
         if (reason == "Вопрос") mp.v2_reportsUtils.createHelp(player, message);
         else mp.v2_reportsUtils.createClaim(player, message);
         return player.utils.success(`Ожидайте ответ от Администрации!`);
@@ -217,12 +217,12 @@ module.exports = {
         if (reportPlayer) reportPlayer.utils.success(`Вашу жалобу ${reportId} закрыли. Спасибо за помощь!`);
 
         DB.Handle.query("UPDATE reports SET status = 1, updated_at = ? WHERE id = ?", [Math.floor(Date.now() / 1000), reportId]);
-     mp.logs.sendToDiscord(`${player.name} закрыл жалобу №${reportId}`, `Social Club: ${player.socialClub}`, 20);
+        // mp.logs.sendToDiscord(`${player.name} закрыл жалобу №${reportId}`, `Social Club: ${player.socialClub}`, 20);
     },
 
     // Carter's console reports
     "report.addMessage": (player, data) => {
-     debug(`report.addMessage: ${player.name} ${data}`)
+        // debug(`report.addMessage: ${player.name} ${data}`)
         data = JSON.parse(data);
         var reportId = data[0];
         var text = data[1].substr(0, 540).trim();
@@ -232,7 +232,7 @@ module.exports = {
     },
 
     "report.attach": (player, reportId) => {
-     debug(`report.attach: ${player.name} ${reportId}`);
+        // debug(`report.attach: ${player.name} ${reportId}`);
         if (!player.admin) return player.utils.error(`Вы не админ!`);
         var report = mp.v2_reports[reportId];
         if (!report) return player.utils.error(`Тикет с ID: ${reportId} не найден!`);
@@ -250,7 +250,7 @@ module.exports = {
     },
 
     "report.close": (player, reportId) => {
-        debug(`report.close: ${player.name} ${reportId}`);
+        // debug(`report.close: ${player.name} ${reportId}`);
         if (!player.admin) return player.utils.error(`Вы не админ!`);
         var report = mp.v2_reports[reportId];
         if (!report) return player.utils.error(`Тикет с ID: ${reportId} не найден!`);

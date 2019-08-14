@@ -48,7 +48,7 @@ function initPlayerStartUtils(player) {
 
                 DB.Handle.query(query, values, (e, invResult) => {
                     //console.log(invResult)
-                    if (result.length == 0) return player.utils.initNewCharacter(1);
+                    //if (result.length == 0) return player.utils.initNewCharacter(1);
                     player.spawn(new mp.Vector3(-66.43, -820.07, 326.08)); // крыша
                     var list = [];
                     for (var i = 0; i < result.length; i++) {
@@ -84,7 +84,7 @@ function initPlayerStartUtils(player) {
                         });
                     }
                     player.characters = result;
-                    player.utils.copyPed(0);
+                    //player.utils.copyPed(0);
                     player.call(`showSelectorCharacters`, [{
                         donate: player.account.donate,
                         isAchievements: player.account.achievements_slot,
@@ -102,7 +102,7 @@ function initPlayerStartUtils(player) {
             player.setClothes(8, undershirtDefault, 0, 0);
             player.setClothes(2, character.hair, 0, 0);
             player.sex = character.sex;
-            player.body.loadItems(character.bodyItems);
+            //player.body.loadItems(character.bodyItems);
 
             var isLast = (characterIndex == player.characters.length - 1);
             var data = {

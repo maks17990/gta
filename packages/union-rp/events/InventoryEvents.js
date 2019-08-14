@@ -1,6 +1,6 @@
 module.exports = {
     "item.throw": (player, sqlId) => {
-         debug(`${player.name} called item.throw: ${sqlId}`);
+        // debug(`${player.name} called item.throw: ${sqlId}`);
         var item = player.inventory.getItem(sqlId);
         if (!item) {
             player.call(`inventory.delete`, [sqlId]);
@@ -10,7 +10,7 @@ module.exports = {
         if (player.hasCuffs) return player.utils.error(`Вы в наручниках!`);
         // TODO: Поумнее сделать.
         var level = mp.convertMinutesToLevelRest(player.minutes).level;
-         if (item.itemId == 4 && level < 100) return player.utils.error(`Временно выключено!`);
+        // if (item.itemId == 4 && level < 100) return player.utils.error(`Временно выключено!`);
 
         player.inventory.delete(sqlId, (e) => {
             if (e) return player.utils.error(e);
