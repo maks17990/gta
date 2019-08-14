@@ -47,12 +47,12 @@ module.exports = {
         if (skillsCount > 10 + 10 + 6 * 2) return showRegError(player, `Превышено количество очков умений!`);
         DB.Handle.query("SELECT null FROM characters WHERE accountId=?", [player.account.id], (e, result) => {
             if (result.length >= Config.maxCharacters) return showRegError(player, `У Вас макс. количество персонажей!`);
-            if (result.length === 0) {
+            /*if (result.length === 0) {
                 var PromoId = player.account.promoId;
                 DB.Handle.query(`UPDATE accounts SET promocode='' WHERE id=?`, [player.account.id], (e, result) => {});
             } else {
                 var PromoId = 0;
-            }
+            }*/
 
             DB.Handle.query(`SELECT null FROM characters WHERE name=?`, [data.characterName], (e, result) => {
                 if (e) {
@@ -140,10 +140,10 @@ module.exports = {
 
                     var item = bodyItems[0];
                     item.params.owner = result.insertId;
-                    mp.inventory.autoIncrement++;
+                    // mp.inventory.autoIncrement++;
                     DB.Handle.query("INSERT INTO inventory_players (playerId,itemId,`index`,params) VALUES (?,?,?,?)",
                     [result.insertId, item.itemId, item.itemId - 1, JSON.stringify(item.params)], (e, result2) => {
-                        mp.inventory.autoIncrement = result.insertId + 1;
+                        // mp.inventory.autoIncrement = result.insertId + 1;
 
                         // кладем доки в брюки
                         var docsParams = {
@@ -156,7 +156,7 @@ module.exports = {
                         DB.Handle.query("INSERT INTO inventory_players (playerId,itemId,`index`,params,parentId) VALUES (?,?,?,?,?)",
                             [result.insertId, 16, 0, JSON.stringify(docsParams), result2.insertId], (e) => {
                             if (e) console.log(e);
-                            mp.inventory.autoIncrement = result.insertId + 1;
+                            // mp.inventory.autoIncrement = result.insertId + 1;
                         });
 
                     });
@@ -218,7 +218,7 @@ module.exports = {
         initPlayerInventory(player);
         initPlayerTelephone(player);
         initFinesCount(player);
-        initSatietyTimer(player);
+        // initSatietyTimer(player);
         initJobSkills(player);
         spawnPlayerCars(player);
         mp.broadcastEnterFactionPlayers(player);
@@ -781,7 +781,7 @@ function initPlayerUtils(player) {
                 delete rec.arrestTimerId;
 
                 rec.position = mp.policeCellsExit;
-                rec.spawn(mp.policeCellsExit);
+                //rec.spawn(mp.policeCellsExit);
                 rec.heading = mp.policeCellsExit.h;
 
                 rec.utils.setArrestTime(0);
@@ -799,7 +799,7 @@ function initPlayerUtils(player) {
         delete player.arrestTimerId;
 
         player.position = mp.policeCellsExit;
-        rec.spawn(mp.policeCellsExit);
+        //rec.spawn(mp.policeCellsExit);
         player.heading = mp.policeCellsExit.h;
 
         player.utils.setArrestTime(0);
@@ -823,7 +823,7 @@ function initPlayerUtils(player) {
         if (!item.params.weaponHash) return;
         player.giveWeapon(item.params.weaponHash, 0);
         player.setWeaponAmmo(item.params.weaponHash, parseInt(item.params.ammo));
-        player.call(`setWeaponAmmo`, [hash, item.params.ammo]);
+        //player.call(`setWeaponAmmo`, [hash, item.params.ammo]);
     };
     player.utils.setSpawn = (spawnPoint) => {
         player.spawnPoint = spawnPoint;
@@ -838,7 +838,7 @@ function initPlayerUtils(player) {
         player.call(`playerMenu.setHouseId`, [player.houseId, 'server']);
     };
     player.utils.setReport = (event, param) => {
-         if (player.admin <= 0) {
+        // if (player.admin <= 0) {
             if(event == 'setNewReport') {
                 player.call(`reportSystem.reports`, [param]);
             } else if(event == 'setNewMessage') {
@@ -846,7 +846,7 @@ function initPlayerUtils(player) {
             } else if(event == 'closeTicket') {
                 player.call(`reportSystem.close`, [param]);
             }
-         }
+        // }
 
         mp.players.forEach((rec) => {
             if (rec.admin > 0 && rec.load == 1) {
@@ -917,7 +917,7 @@ function initPlayerUtils(player) {
         player.call(`inventory.setSatiety`, [player.satiety]);
 
         if (player.satiety <= 10) {
-             player.utils.drawTextOverPlayer(`хочет перекусить`);
+            // player.utils.drawTextOverPlayer(`хочет перекусить`);
             player.utils.warning(`Вы проголодались! Необходимо подкрепиться!`);
         }
     };
@@ -927,7 +927,7 @@ function initPlayerUtils(player) {
         player.call(`inventory.setThirst`, [player.thirst]);
 
         if (player.thirst <= 10) {
-             player.utils.drawTextOverPlayer(`хочет пить`);
+            // player.utils.drawTextOverPlayer(`хочет пить`);
             player.utils.warning(`Вы испытываете жажду! Необходимо попить!`);
         }
     };
@@ -1007,16 +1007,16 @@ function initLocalParams(player) {
                     //player.account.allDonate += r.sum;
                 }
 
-                if(r.status == 1 && r.id <= 618) {
+                /*if(r.status == 1 && r.id <= 618) {
                     if(player.account.done == 0) player.account.donate = r.sum + r.sum * 0.5;
-                }
+                }*/
             }
 
-            if(player.account.done == 0) {
+            /*if(player.account.done == 0) {
                 player.account.done = 1;
                 DB.Handle.query("UPDATE accounts SET donate = ? WHERE login = ?", [player.account.donate, player.account.login]);
                 DB.Handle.query("UPDATE accounts SET done = 1 WHERE login = ?", [player.account.login]);
-            }
+            }*/
 
             player.call(`donateSystem.paymentsAccount`, [payments]);
         } else {
@@ -1032,7 +1032,7 @@ function initLocalParams(player) {
 
     var characterLevel = mp.convertMinutesToLevelRest(player.minutes);
 
-    player.call(`adminPanel.levelAdmin`, [player.admin]);
+    //player.call(`adminPanel.levelAdmin`, [player.admin]);
     //console.log(player.admin);
 
     player.utils.setLocalVar("admin", player.admin);
@@ -1176,14 +1176,14 @@ function initSatietyTimer(player) {
             if (rec.satiety <= 0) {
                 rec.health -= mp.economy["satiety_satiety_health"].value;
                 if (rec.health <= 0) return rec.utils.warning(`Вы умерли от голода!`);
-                 rec.utils.drawTextOverPlayer(`держится за живот`);
+                // rec.utils.drawTextOverPlayer(`держится за живот`);
                 if (rec.health < 30) rec.utils.warning(`Вы проголодались! Посетите закусочную или купите что нибудь из еды!`);
                 return;
             }
             if (rec.thirst <= 0) {
                 rec.health -= mp.economy["satiety_thirst_health"].value;
                 if (rec.health <= 0) return rec.utils.warning(`Вы умерли от жажды!`);
-                 rec.utils.drawTextOverPlayer(`тяжело дышит`);
+                // rec.utils.drawTextOverPlayer(`тяжело дышит`);
                 if (rec.health < 30) rec.utils.warning(`Вы погибаете от жажды! Срочно выпейте напиток!`);
                 return;
             }
@@ -1231,8 +1231,8 @@ function spawnPlayerCars(player) {
                 vehicle.name = v.model.toLowerCase();
                 vehicle.sqlId = v.id;
 
-                 vehicle.setColor(v["color1"], v["color2"]);
-                vehicle.rotation = new mp.Vector3(0, 0, pos.h);
+                // vehicle.setColor(v["color1"], v["color2"]);
+                //vehicle.rotation = new mp.Vector3(0, 0, pos.h);
                 vehicle.vehPropData.engineBroken = v.engineBroken;
                 vehicle.vehPropData.oilBroken = v.oilBroken;
                 vehicle.vehPropData.accumulatorBroken = v.accumulatorBroken;

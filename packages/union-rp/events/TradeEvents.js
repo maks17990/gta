@@ -46,7 +46,7 @@ module.exports = {
     },
 
     "trade.start": (player, recipientId) => {
-        debug(`trade.start: ${player.name} ${recipientId}`);
+        //debug(`trade.start: ${player.name} ${recipientId}`);
 
         var trader = mp.players.at(recipientId);
         if (!trader) return player.utils.error(`Продавец не найден!`);
@@ -87,7 +87,7 @@ module.exports = {
     },
 
     "trade.queryAddItem": (player, itemSqlId, index) => {
-        debug(`trade.queryAddItem: ${player.name} ${itemSqlId} ${index}`);
+        //debug(`trade.queryAddItem: ${player.name} ${itemSqlId} ${index}`);
         if (!player.trade) return player.utils.error(`Вы не вступили в обмен!`);
 
         var trader = mp.players.at(player.trade.traderId);
@@ -114,7 +114,7 @@ module.exports = {
     },
 
     "trade.queryDeleteItem": (player, itemSqlId) => {
-        debug(`trade.queryDeleteItem: ${player.name} ${itemSqlId}`);
+        //debug(`trade.queryDeleteItem: ${player.name} ${itemSqlId}`);
         if (!player.trade) return player.utils.error(`Вы не вступили в обмен!`);
 
         var trader = mp.players.at(player.trade.traderId);
@@ -134,7 +134,7 @@ module.exports = {
     },
 
     "trade.queryAccept": (player) => {
-        debug(`trade.queryAccept: ${player.name}`);
+        //debug(`trade.queryAccept: ${player.name}`);
         if (!player.trade) return player.utils.error(`Вы не вступили в обмен!`);
 
         if (player.trade.isReady) return player.utils.error(`Вы уже готовы!`);
@@ -190,21 +190,21 @@ module.exports = {
                 return trader.utils.error(`Один из предметов не найден!`);
             }
 
-            debug(`Делаем обмен предметами между ${player.name} и ${trader.name}`);
-            debug(`1-ый игрок items: ${JSON.stringify(playerItems)}`);
-            debug(`2-ой игрок items: ${JSON.stringify(traderItems)}`);
+            //debug(`Делаем обмен предметами между ${player.name} и ${trader.name}`);
+            //debug(`1-ый игрок items: ${JSON.stringify(playerItems)}`);
+            //debug(`2-ой игрок items: ${JSON.stringify(traderItems)}`);
 
             var playerItemSqlIds = Object.keys(playerItems);
             var traderItemSqlIds = Object.keys(traderItems);
 
-            debug(`1-ый игрок itemSqlIds: ${JSON.stringify(playerItemSqlIds)}`);
-            debug(`2-ой игрок itemSqlIds: ${JSON.stringify(traderItemSqlIds)}`);
+            //debug(`1-ый игрок itemSqlIds: ${JSON.stringify(playerItemSqlIds)}`);
+            //debug(`2-ой игрок itemSqlIds: ${JSON.stringify(traderItemSqlIds)}`);
 
             var playerSlots = player.inventory.findFreeSlots(mp.inventory.itemsToItemIds(traderItems), playerItems);
             var traderSlots = trader.inventory.findFreeSlots(mp.inventory.itemsToItemIds(playerItems), traderItems);
 
-            debug(`playerSlots: ${JSON.stringify(playerSlots)}`);
-            debug(`traderSlots: ${JSON.stringify(traderSlots)}`);
+            //debug(`playerSlots: ${JSON.stringify(playerSlots)}`);
+            //debug(`traderSlots: ${JSON.stringify(traderSlots)}`);
 
             if (playerSlots.length < traderItemSqlIds.length) {
                 player.utils.error(`Не хватает места!`);
@@ -250,11 +250,11 @@ module.exports = {
                 traderItemsWeight += weight;
             }
 
-            debug(`player.getCommonWeight: ${playerWeight}`);
-            debug(`trader.getCommonWeight: ${traderWeight}`);
+            //debug(`player.getCommonWeight: ${playerWeight}`);
+            //debug(`trader.getCommonWeight: ${traderWeight}`);
 
-            debug(`playerItemsWeight: ${playerItemsWeight}`);
-            debug(`traderItemsWeight: ${traderItemsWeight}`);
+            //debug(`playerItemsWeight: ${playerItemsWeight}`);
+            //debug(`traderItemsWeight: ${traderItemsWeight}`);
 
 
             if (playerWeight - playerItemsWeight + traderItemsWeight > Config.maxInventoryWeight) {
@@ -283,7 +283,7 @@ module.exports = {
     },
 
     "trade.queryCancel": (player) => {
-        debug(`trade.queryCancel: ${player.name}`);
+        //debug(`trade.queryCancel: ${player.name}`);
         if (!player.trade) return player.utils.error(`Вы не вступили в обмен!`);
 
         if (!player.trade.isReady) return player.utils.error(`Вы уже не готовы!`);
@@ -308,7 +308,7 @@ module.exports = {
     },
 
     "trade.sendChat": (player, text) => {
-        debug(`trade.sendChat: ${player.name} ${text}`);
+        //debug(`trade.sendChat: ${player.name} ${text}`);
         if (!player.trade) return player.utils.error(`Вы не вступили в обмен!`);
 
         var trader = mp.players.at(player.trade.traderId);

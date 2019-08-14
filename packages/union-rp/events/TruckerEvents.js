@@ -1,6 +1,6 @@
 module.exports = {
     "trucker.buyTrailer": (player, count) => {
-        debug(`trucker.buyTrailer: ${player.name} ${count}`)
+        //debug(`trucker.buyTrailer: ${player.name} ${count}`)
         count = Math.clamp(parseInt(count), 1, 50);
         if (!player.colshape || !player.colshape.truckerLoad) return player.utils.warning(`Необходимо находиться у загрузки груза!`);
         if (player.job != 5) return player.utils.error(`Вы не являетесь дальнобойщиком!`);
